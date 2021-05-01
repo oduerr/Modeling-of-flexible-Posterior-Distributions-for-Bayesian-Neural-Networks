@@ -89,7 +89,7 @@ def h_w2z_fake_inverse_taylor(w_to_inverse, a, b, theta, alpha, beta, beta_dist,
 
     return z_fake
 
-@tf.function
+#@tf.function
 def eval_variational_dist(z, z_epsilon, a, b, theta, alpha, beta, beta_dist, beta_dist_dash):
     fz=tfd.Normal(loc=0,scale=1).prob(z)
     w=h_z2w(z=z,a=a,b=b,theta=theta,alpha=alpha,beta=beta,beta_dist=beta_dist)
