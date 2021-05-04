@@ -98,8 +98,8 @@ def h_w2z_fake_inverse_taylor(w_to_inverse, a, b, theta, alpha, beta, beta_dist,
 #     q=fz*tf.math.abs(h_w2z_dash)
 #     return q,w
 
-def eval_variational_dist(base_dist_z, z, z_epsilon, epsilon, a, b, theta, alpha, beta, beta_dist, beta_dist_dash):
-    fz=base_dist_z.prob(z)
+def eval_variational_dist(z, z_epsilon, a, b, theta, alpha, beta, beta_dist, beta_dist_dash):
+    fz=tfd.Normal(loc=0,scale=1).prob(z)
     with tf.GradientTape() as tape:
         tape.watch([z]) #Bug in TF? We need to watch z otherwise it does not work
         w=h_z2w(z=z,a=a,b=b,theta=theta,alpha=alpha,beta=beta,beta_dist=beta_dist)
